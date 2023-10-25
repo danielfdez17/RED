@@ -1,0 +1,6 @@
+ip link == ip l
+ip address == ip a
+ip route == ip r
+ip neigh = ip n
+show = sh, list, lst, ls, l
+set = set

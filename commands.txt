@@ -1,0 +1,38 @@
+PRACTICA 1
+man ip
+ip -help
+ip link show
+ip link show dev eth1
+ip -s link show dev eth1 (estadisticas de funcionamiento)
+ip link set dev eth0 down (desactiva interfaz de red)
+ip link set dev eth0 up (activa interfaz de red)
+ip address show dev eth0
+ip address add 192.168.0.1/24 broadcast 192.168.0.255 dev eth0
+ip address add 192.168.0.1/24 broadcast + dev eth0
+ip address delete 192.168.0.1/24 dev eth0
+ping 192.168.0.1 (se termina con Ctrl + C)
+ping -c 3 192.168.0.1 (manda 3 paquetes)
+ip link set dev eth0 mtu 1000
+ip neigh show (visualizar tabla ARP)
+ip neigh show dev eth0 (visualizar tabla ARP de eth0)
+ip neigh delete 192.168.0.1 dev eth0 (borra entrada tabla ARP)
+ip neigh add 192.168.0.1 lladdr 00:40:F4:9A:63:FE dev eth0
+ip neigh add 192.168.0.1 lladdr 00:40:F4:9A:63:FE dev eth0 nud reachable (entrada temporal a tabla ARP)
+ip link set dev eth0 arp on/off (habilita/deshibilita protocolo ARP)
+ip address add 10.0.0.1/24 broadcast + label eth0:0 dev eth0 (añadir etiqueta)
+=======================================================================================================
+PRACTICA 2
+sysctl -w net ipv4.conf.all.forwarding=1/0 (activa/desactiva reenvio de paquetes en maquina con SO linux)
+sysctl -a | grep net.ipv4.conf.all.forwarding (comprueba el valor que tiene)
+ip route add default via 192.168.0.1
+ip route delete default via 192.168.0.1
+sysctl net.ipv4.ip_no_pmtu_disc (comprueba el valor que tiene)
+ip route show table cache (muestra la tabla FIB = Forwarding Information Base)
+ip route flush table cache (vacia la tabla FIB)
+=========================================================================================================
+PRACTICA 3
+cat /etc/services (muestra listado de puertos bien conocidos)
+nc -l -p <server_port> (crea un servidor TCP con netcat)
+nc <server_IP_address> <server_port> (crea un cliente TCP con netcat)
+nc -l -u -p <server_port> (-l: actuar como servidor; -u: abrir puerto UDP; -p: nº de puerto del servidor)
+nc -u <server_IP_address> <server_port> (crea un cliente UDP con netcat)
